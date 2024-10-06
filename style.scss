@@ -6,6 +6,7 @@
   --ctp-macchiato-sky-rgb: 145 215 227;
   --ctp-macchiato-base-rgb: 36 39 58;
 }
+
 *,
 *::before,
 *::after {
@@ -13,6 +14,7 @@
   padding: 0px;
   margin: 0px;
 }
+
 body {
   padding: 0 2rem;
   font-family: 'PT Sans', sans-serif;
@@ -32,11 +34,13 @@ body {
   background-size: 40px 40px;
   background-image: radial-gradient(circle, rgba(255, 83, 143, 0.5) 1px, rgba(0, 0, 0, 0) 2px);
   animation: backgroundAnimation 1200s linear infinite;
+
   @media (min-width: 800px) {
     main {
       max-width: 60vw;
     }
   }
+
   footer {
     text-align: center;
     bottom: 0;
@@ -44,17 +48,21 @@ body {
     font-size: 0.75rem;
     color: rgb(var(--ctp-macchiato-mauve-rgb));
   }
+
   span {
     color: rgb(var(--ctp-macchiato-red-rgb));
   }
+
   h1 {
     font-size: 2.5rem;
     font-weight: 700;
   }
+
   small {
     font-size: 1rem;
     color: rgb(var(--ctp-macchiato-mauve-rgb));
   }
+
   a,
   a:visited,
   a:hover,
@@ -67,6 +75,7 @@ body {
       color: rgb(var(--ctp-macchiato-red-rgb));
     }
   }
+
   .cursor {
     width: 30px;
     height: 30px;
@@ -80,17 +89,20 @@ body {
       0.5s background,
       0.2s transform;
   }
+
   @keyframes fadeIn {
     100% {
       opacity: 1;
       transform: scale(1);
     }
   }
+
   .fade {
     animation: fadeIn 0.5s forwards;
     opacity: 0;
     transform: scale(0.85);
   }
+
   @keyframes backgroundAnimation {
     from {
       background-position: 0 0;

@@ -15,6 +15,7 @@ window.addEventListener('mousemove', function (e) {
     cursor.style.display = 'none';
   }
 });
+
 window.addEventListener('mouseover', function (e) {
   const classList = e.target.classList;
   if (e.target.tagName === 'A' || classList.contains('info')) {
@@ -25,10 +26,12 @@ window.addEventListener('mouseover', function (e) {
     cursor.style.transform = 'scale(0.8)';
   }
 });
+
 window.addEventListener('mousedown', function (e) {
   cursor.style.background = colors.hover;
   cursor.style.transform = 'scale(1)';
 });
+
 window.addEventListener('mouseup', function (e) {
   cursor.style.background = colors.default;
   cursor.style.transform = 'scale(0.8)';

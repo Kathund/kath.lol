@@ -1,38 +1,36 @@
-var colors = { default: 'rgba(237, 135, 150, 0.2)', hover: 'rgba(138, 173, 244, 0.6)' };
-const fadeElements = document.querySelectorAll('.fade');
-const cursor = document.querySelector('.cursor');
+function toggleColor() {
+  document.body.classList.toggle('latte');
+  document.body.classList.toggle('mocha');
+  const enabled = document.body.classList.contains('mocha');
+  localStorage.setItem('dark', enabled);
+  document.getElementById('toggle').firstChild.firstChild.textContent = `Toggle ${enabled ? 'Light' : 'Dark'} Mode`;
+}
 
-fadeElements.forEach((fadeElement, index) => {
-  fadeElement.style.animationDelay = `${index * 1}s`;
-});
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) toggleColor();
+  if (localStorage.getItem('dark') === 'true') toggleColor();
+  document.getElementById('toggle').addEventListener('click', () => toggleColor());
 
-window.addEventListener('mousemove', function (e) {
-  if (window.innerWidth >= 512) {
-    cursor.style.display = 'block';
-    cursor.style.top = `${e.pageY - cursor.clientWidth / 2}px`;
-    cursor.style.left = `${e.pageX - cursor.clientHeight / 2}px`;
-  } else {
-    cursor.style.display = 'none';
+  const cursor = document.getElementById('cursor');
+  function toggleCursorHover() {
+    cursor.classList.toggle('bg-ctp-red');
+    cursor.classList.toggle('bg-ctp-sky');
+    cursor.classList.toggle('scale-125');
   }
-});
 
-window.addEventListener('mouseover', function (e) {
-  const classList = e.target.classList;
-  if (e.target.tagName === 'A' || classList.contains('info')) {
-    cursor.style.background = colors.hover;
-    cursor.style.transform = 'scale(1)';
-  } else {
-    cursor.style.background = colors.default;
-    cursor.style.transform = 'scale(0.8)';
-  }
-});
+  window.addEventListener('mousemove', (event) => {
+    cursor.style.top = `${event.pageY - cursor.clientWidth / 2}px`;
+    cursor.style.left = `${event.pageX - cursor.clientHeight / 2}px`;
+  });
 
-window.addEventListener('mousedown', function (e) {
-  cursor.style.background = colors.hover;
-  cursor.style.transform = 'scale(1)';
-});
+  window.addEventListener('mouseover', (event) => {
+    if (event.target.tagName === 'A') toggleCursorHover();
+  });
 
-window.addEventListener('mouseup', function (e) {
-  cursor.style.background = colors.default;
-  cursor.style.transform = 'scale(0.8)';
+  window.addEventListener('mouseout', (event) => {
+    if (event.target.tagName === 'A') toggleCursorHover();
+  });
+
+  window.addEventListener('mousedown', () => toggleCursorHover());
+  window.addEventListener('mouseup', () => toggleCursorHover());
 });

@@ -44,13 +44,17 @@ export const coolPeople: PersonProps[] = [
   { name: 'Wyvest', site: 'https://wyvest.net' },
   { name: 'AzureAaron', site: 'https://azureaaron.net' },
   { name: 'WarpWing', site: 'https://blog.warpwing.cloud' },
-  { name: 'Shine', site: 'https://awruff.dog', github: 'awruff', codeberg: 'awruff' }
+  { name: 'shine', site: 'https://awruff.dog', github: 'awruff', codeberg: 'awruff' },
+  { name: 'nea', site: 'https://nea.moe', github: 'lineargraph' },
+  { name: 'amy', site: 'https://amy.rip', github: null },
 ];
 
 export const peopleButtons: ButtonProps[] = [
   { alt: 'kathund', src: '/button/people/kath.png', href: 'https://kathund.dev' },
   { alt: 'mat', src: '/button/people/mat.png', href: 'https://matdoes.dev' },
-  { alt: 'shiny', src: '/button/people/shiny.png', href: 'https://awruff.dog' }
+  { alt: 'shiny', src: '/button/people/shiny.png', href: 'https://awruff.dog' },
+  { alt: 'nea', src: '/button/people/nea.png', href: 'https://nea.moe' },
+  { alt: 'amy', src: '/button/people/amy.png', href: 'https://amy.rip' }
 ];
 
 export const buttons: ButtonProps[] = [
@@ -92,7 +96,6 @@ export const buttons: ButtonProps[] = [
 
 <Layout title="About" footer={false}>
   <div class="flex flex-col gap-3">
-    fever
     <div>
       <p class="text-2xl">Silly dev that writes <span class="text-ctp-red">bad</span> code!</p>
       <p>I primarily use <Link href="https://github.com/kathund/nix-config" text="NixOS" /> and NeoVim.</p>

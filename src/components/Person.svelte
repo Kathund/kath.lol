@@ -4,7 +4,7 @@
 
   export interface PersonProps {
     name: string;
-    github?: string;
+    github?: string | null;
     codeberg?: string;
     site?: string;
     note?: string;
@@ -12,7 +12,7 @@
   }
 
   let { name, github, codeberg, site, note, shouldRandomCase }: PersonProps = $props();
-  github = `https://github.com/${github ?? name}`;
+  if (github !== null) github = `https://github.com/${github ?? name}`;
 
   function randomizeName() {
     name = shouldRandomCase === true ? randomCase(name) : name;
@@ -29,12 +29,14 @@
     {/if}
   </div>
   <div class="pl-8 text-sm text-ctp-text/60 flex flex-col">
-    {#if site !== undefined}
+    {#if site}
       <Link href={site} text="- Site" />
     {/if}
-    {#if codeberg !== undefined}
+    {#if codeberg}
       <Link href={`https://codeberg.org/${codeberg}`} text="- Codeberg" />
     {/if}
-    <Link href={github} text="- GitHub" />
+    {#if github}
+      <Link href={github} text="- GitHub" />
+    {/if}
   </div>
 </div>

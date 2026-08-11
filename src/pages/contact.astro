@@ -1,0 +1,18 @@
+---
+import HorizontalSeparator from '../components/HorizontalSeparator.svelte';
+import Layout from '../layouts/Layout.astro';
+import Link from '../components/Link.svelte';
+---
+
+<Layout title="Contact">
+  <div class="flex flex-col gap-3">
+    <div>
+      <p class="text-2xl">I can be contacted via <span class="text-ctp-red">any</span> of the following sources</p>
+      <div class="flex flex-col">
+        <Link href="mailto:contact@kathund.dev" text="- Email: contact@kathund.dev" />
+        <p>- Matrix: @kathund:snowball.kathund.dev</p>
+        <Link href="https://discord.com/users/1276524855445164098" text="- Discord: @.kathund (1276524855445164098)" />
+      </div>
+    </div>
+  </div>
+</Layout>

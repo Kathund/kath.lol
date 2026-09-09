@@ -2,15 +2,6 @@
   import { randomCase } from '../lib/misc';
   import Link from './Link.svelte';
 
-  export interface PersonProps {
-    name: string;
-    github?: string | null;
-    codeberg?: string;
-    site?: string;
-    note?: string;
-    shouldRandomCase?: boolean;
-  }
-
   let { name, github, codeberg, site, note, shouldRandomCase }: PersonProps = $props();
   if (github !== null) github = `https://github.com/${github ?? name}`;
 

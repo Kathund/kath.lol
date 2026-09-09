@@ -1,13 +1,12 @@
 <script lang="ts">
+  import { setTheme } from '../lib/themes';
   import { onMount } from 'svelte';
 
   let enabled = false;
 
   function theme(isLight: boolean) {
-    document.documentElement.classList.toggle('mocha', !isLight);
-    document.documentElement.classList.toggle('latte', isLight);
+    setTheme(isLight);
     enabled = isLight;
-    localStorage.setItem('light', String(isLight));
   }
 
   function toggle() {

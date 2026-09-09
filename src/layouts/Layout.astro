@@ -1,5 +1,4 @@
 ---
-import { setTheme, getCurrentThemeIndex } from '../lib/themes';
 import Header from '../components/Header.svelte';
 import Footer from '../components/Footer.svelte';
 import '../styles/global.css';
@@ -17,16 +16,22 @@ const currentPath = Astro.url.pathname;
 <html lang="en" class="mocha">
   <head>
     <script is:inline>
-      (function () {
-        const stored = localStorage.getItem('light');
-        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-        const isLight = stored !== null ? stored === 'true' : prefersLight;
+      const stored = localStorage.getItem('light');
+      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+      const isLight = stored !== null ? stored === 'true' : prefersLight;
 
-        const root = document.documentElement;
+      document.documentElement.classList.toggle('mocha', !isLight);
+      document.documentElement.classList.toggle('latte', isLight);
+    </script>
 
-        root.classList.remove('mocha', 'latte');
-        root.classList.add(isLight ? 'latte' : 'mocha');
-      })();
+    <script>
+      import { setTheme } from '../lib/themes';
+
+      const stored = localStorage.getItem('light');
+      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+      const isLight = stored !== null ? stored === 'true' : prefersLight;
+
+      setTheme(isLight);
     </script>
 
     <meta charset="utf-8" />

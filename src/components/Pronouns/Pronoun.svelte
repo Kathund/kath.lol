@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { PronounsLegend, type PronounData } from '../../lib/pronouns';
+  import { PronounsLegend, type PronounsListComponentDataItem } from '../../lib/pronouns';
   import PronounIcon from './PronounIcon.svelte';
   import { twMerge } from 'tailwind-merge';
 
-  export interface FullPronounsProps extends PronounData {
+  export interface FullPronounsProps extends PronounsListComponentDataItem {
     right: boolean;
   }
 

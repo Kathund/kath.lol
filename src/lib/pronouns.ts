@@ -1,20 +1,19 @@
-export type PronounsLegendKey = 'Love' | 'Like' | 'Joke' | 'Close' | 'No';
-
-export interface PronounsLegendData {
+export interface PronounsLegendItem {
   icon: string;
   title: string;
   style: string;
 }
 
-export const PronounsLegend = {
+export const PronounsLegend: Record<string, PronounsLegendItem> = {
   Love: { icon: '💜', title: 'I love this!', style: 'font-bold text-ctp-mauve' },
   Like: { icon: '👍', title: 'I like this', style: '' },
   Joke: { icon: '😛', title: 'Only jokingly', style: 'text-ctp-peach' },
   Close: { icon: '🫂', title: 'Only if we are close', style: 'pronouns-close-hover-gradient' },
   No: { icon: '👎', title: 'No.', style: 'text-ctp-red' }
 } as const;
+export type PronounsLegendKey = keyof typeof PronounsLegend;
 
-export interface PronounData {
+export interface PronounsListComponentDataItem {
   title: string;
   key: PronounsLegendKey;
 }
@@ -22,7 +21,7 @@ export interface PronounData {
 export interface PronounsListComponentData {
   title: string;
   big: boolean;
-  items: PronounData[];
+  items: PronounsListComponentDataItem[];
 }
 
 export const GenericPronounGruop: PronounsListComponentData[] = [
@@ -30,7 +29,7 @@ export const GenericPronounGruop: PronounsListComponentData[] = [
     title: 'Names',
     big: true,
     items: [
-      { title: 'Jacob', key: 'Love' },
+      { title: 'Amber', key: 'Love' },
       { title: 'Kath/Kathund', key: 'Love' },
       { title: 'Any variation of kat/kath', key: 'Close' }
     ]
@@ -40,7 +39,7 @@ export const GenericPronounGruop: PronounsListComponentData[] = [
     big: true,
     items: [
       { title: 'Use my name', key: 'Love' },
-      { title: 'Any', key: 'Love' }
+      { title: 'she/her', key: 'Love' }
     ]
   }
 ] as const;

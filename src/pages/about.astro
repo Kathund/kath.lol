@@ -1,97 +1,14 @@
 ---
+import { Buttons, CoolPeople, ThingsIUse, PeopleButtons } from '../lib/about';
 import HorizontalSeparator from '../components/HorizontalSeparator.svelte';
 import VerticalSeparator from '../components/VerticalSeparator.svelte';
-import Button, { type ButtonProps } from '../components/Button.svelte';
-import Person, { type PersonProps } from '../components/Person.svelte';
 import ResponseTime from '../components/Time/ResponseTime.svelte';
+import PersonButton from '../components/PersonButton.svelte';
 import Footer from '../components/Footer.svelte';
+import Button from '../components/Button.svelte';
+import Person from '../components/Person.svelte';
 import Layout from '../layouts/Layout.astro';
 import Link from '../components/Link.svelte';
-
-export interface Thing {
-  href: string;
-  text: string;
-}
-
-export const thingsIUse: Thing[] = [
-  { href: 'https://astro.build', text: 'Astro' },
-  { href: 'https://bun.sh', text: 'Bun' },
-  { href: 'https://cloudflare.com', text: 'Cloudflare' },
-  { href: 'https://discord.js.org', text: 'Discord.js' },
-  { href: 'https://ejs.co', text: 'EJS' },
-  { href: 'https://nodejs.org/en', text: 'Node.js' },
-  { href: 'https://react.dev', text: 'React' },
-  { href: 'https://sass-lang.com', text: 'SASS' },
-  { href: 'https://svelte.dev', text: 'Svelte' },
-  { href: 'https://tailwindcss.com', text: 'TailwindCSS' }
-];
-
-export const coolPeople: PersonProps[] = [
-  { name: 'aidn5', github: 'aidn3' },
-  { name: 'bloxigus', shouldRandomCase: true },
-  { name: 'DuckySoLucky', site: 'https://duckysolucky.is-a.dev' },
-  { name: 'Empa', github: 'ItsEmpa', note: 'emma' },
-  { name: 'juna', github: 'j10a1n15', note: 'Tuba 🎺', shouldRandomCase: true },
-  { name: 'MadelynWith5Ns', github: 'madelynwith5ns', site: 'https://mw5ns.com', note: 'woof' },
-  { name: 'Mat', github: 'mat-1', site: 'https://matdoes.dev' },
-  { name: 'Meowora', site: 'https://mona.gay' },
-  { name: 'RagingEnby', site: 'https://ragingenby.dev' },
-  { name: 'saadndm' },
-  { name: 'SoopyBoo32', site: 'https://soopy.dev', note: 'SoopyV3' },
-  { name: 'ThatGravyBoat', site: 'https://thatgravyboat.tech' },
-  { name: 'Zickles', note: '🐀' },
-  { name: 'DarthGigi', site: 'https://mrgigi.me' },
-  { name: 'Wyvest', site: 'https://wyvest.net' },
-  { name: 'AzureAaron', site: 'https://azureaaron.net' },
-  { name: 'WarpWing', site: 'https://blog.warpwing.cloud' },
-  { name: 'shine', site: 'https://awruff.dog', github: 'awruff', codeberg: 'awruff' },
-  { name: 'nea', site: 'https://nea.moe', github: 'lineargraph' },
-  { name: 'amy', site: 'https://amy.rip', github: null }
-];
-
-export const peopleButtons: ButtonProps[] = [
-  { alt: 'kathund', src: '/button/people/kath.png', href: 'https://kathund.dev' },
-  { alt: 'mat', src: '/button/people/mat.png', href: 'https://matdoes.dev' },
-  { alt: 'shiny', src: '/button/people/shiny.png', href: 'https://awruff.dog' },
-  { alt: 'nea', src: '/button/people/nea.png', href: 'https://nea.moe' },
-  { alt: 'amy', src: '/button/people/amy.png', href: 'https://amy.rip' }
-];
-
-export const buttons: ButtonProps[] = [
-  { alt: 'I use NixOS by the way!', src: '/button/nix_dark.webp', href: 'https://nixos.org' },
-  { alt: 'Powered By NixOS', src: '/button/powered_by_nixos.gif', href: 'https://nixos.org' },
-  { alt: 'Built With Nix!', src: '/button/built_with_nix.gif', href: 'https://nixos.org' },
-  { alt: 'Teted on Firefox', src: '/button/tested_on_firefox.gif', href: 'https://firefox.com' },
-  { alt: 'Build With Astro', src: '/button/build_with_astro.png', href: 'https://astro.build' },
-  { alt: 'Build With Svelte', src: '/button/build_with_svelte.gif', href: 'https://svelte.dev' },
-  { alt: 'neovim', src: '/button/neovim.gif', href: 'https://neovim.io' },
-  { alt: 'Anything But Chrome', src: '/button/anything_but_chrome.gif', href: 'https://firefox.com' },
-  { alt: 'I like pooters', src: '/button/i_like_computer.png' },
-  { alt: 'Internet Privacy', src: '/button/internet_privacy.gif', href: 'https://eff.org' },
-  { alt: 'Internet Archive', src: '/button/internet-archive.png', href: 'https://archive.org/' },
-  { alt: 'Privacy Now!', src: '/button/privacy_now.gif', href: '/kathund-pgp-public.pgp' },
-  { alt: 'qBittorrent', src: '/button/qbittorrent.png', href: 'https://www.qbittorrent.org/' },
-  { alt: 'Seed Torrents! Please', src: '/button/seed-torrents.gif', href: 'https://www.qbittorrent.org/' },
-  { alt: 'Best Viewed On Desktop!', src: '/button/best-on-desktop.gif' },
-  { alt: "Don't feed AI", src: '/button/dont_feed_ai.gif' },
-  { alt: 'AI is theft', src: '/button/ai_is_theft.webp' },
-  { alt: 'No AI', src: '/button/anti_ai.gif' },
-  {
-    alt: 'Pride Progress',
-    src: '/button/progress_button.png',
-    href: 'https://en.pronouns.page/terminology?filter=progress'
-  },
-  {
-    alt: 'Pansexual',
-    src: '/button/pansexual_button.png',
-    href: 'https://en.pronouns.page/terminology?filter=pansexual'
-  },
-  {
-    alt: 'Nonbinary',
-    src: '/button/nonbinary_button.png',
-    href: 'https://en.pronouns.page/terminology?filter=nonbinary'
-  }
-];
 ---
 
 <Layout title="About" footer={false}>
@@ -119,9 +36,9 @@ export const buttons: ButtonProps[] = [
     <div class="flex flex-col">
       <p class="text-xl">Random things I know how to use:</p>
       {
-        thingsIUse
-          .sort((a, b) => a.text.localeCompare(b.text))
-          .map(({ href, text }) => <Link href={href} text={`- ${text}`} />)
+        ThingsIUse.sort((a, b) => a.text.localeCompare(b.text)).map(({ href, text }) => (
+          <Link href={href} text={`- ${text}`} />
+        ))
       }
     </div>
 
@@ -145,19 +62,17 @@ export const buttons: ButtonProps[] = [
       </div>
       <div class="flex flex-col gap-2">
         {
-          coolPeople
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map((person) => (
-              <Person
-                client:load
-                name={person.name}
-                github={person.github}
-                codeberg={person.codeberg}
-                site={person.site}
-                note={person.note}
-                shouldRandomCase={person.shouldRandomCase}
-              />
-            ))
+          CoolPeople.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())).map((person) => (
+            <Person
+              client:load
+              name={person.name}
+              github={person.github}
+              codeberg={person.codeberg}
+              site={person.site}
+              note={person.note}
+              shouldRandomCase={person.shouldRandomCase}
+            />
+          ))
         }
       </div>
     </div>
@@ -165,11 +80,17 @@ export const buttons: ButtonProps[] = [
 
     <div class="mr-8">
       <div class="grid h-fit grid-cols-1 gap-0 p-2 lg:grid-cols-3">
-        {peopleButtons.map(({ alt, src, href }) => <Button client:load alt={alt} src={src} href={href} />)}
+        {
+          PeopleButtons.sort((a, b) => a.alt.toLowerCase().localeCompare(b.alt.toLowerCase())).map(
+            ({ alt, src, href, light, dark }) => (
+              <PersonButton client:load alt={alt} src={src} href={href} light={light} dark={dark} />
+            )
+          )
+        }
       </div>
       <HorizontalSeparator />
       <div class="grid h-fit grid-cols-1 gap-0 p-2 lg:grid-cols-3">
-        {buttons.map(({ alt, src, href }) => <Button client:load alt={alt} src={src} href={href} />)}
+        {Buttons.map(({ alt, src, href }) => <Button client:load alt={alt} src={src} href={href} />)}
       </div>
     </div>
   </div>
